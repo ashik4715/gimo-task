@@ -3,7 +3,7 @@ const AppContext = React.createContext();
 const URL = "https://openlibrary.org/search.json?q=";
 
 const AppProvider = ({ children }) => {
-  const [searchTerm, setSearchTerm] = useState("the lost world");
+  const [searchTerm, setSearchTerm] = useState("the bleak house");
   const [books, setBooks] = useState([]);
   const [resultTitle, setResultTitle] = useState("");
 
@@ -13,8 +13,9 @@ const AppProvider = ({ children }) => {
       const data = await response.json();
       const { docs } = data;
       console.log(docs);
+
       if (docs) {
-        const newBooks = docs.slice(0, 20).map((bookSingle) => {
+        const newBooks = docs.slice(0, 50).map((bookSingle) => {
           const {
             key,
             author_name,
@@ -22,8 +23,8 @@ const AppProvider = ({ children }) => {
             edition_count,
             first_publish_year,
             title,
+            first_sentence,
           } = bookSingle;
-
           return {
             id: key,
             author: author_name,
@@ -31,6 +32,7 @@ const AppProvider = ({ children }) => {
             edition_count: edition_count,
             first_publish_year: first_publish_year,
             title: title,
+            first_sentence: first_sentence,
           };
         });
 

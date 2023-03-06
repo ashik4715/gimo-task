@@ -4,8 +4,8 @@ const Header = () => {
   return (
     <div>
       <header className="header">
-        <div className="header-content flex flex-c text-center text-white">
-          <h2 className="header-title">Search your book.</h2>
+        <div className="header-content flex flex-c text-center">
+          <h2 className="header-title">Search your book</h2>
           <br />
           <SearchForm />
         </div>

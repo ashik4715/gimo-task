@@ -16,16 +16,38 @@ const BookList = () => {
     };
   });
 
+  const renderHeader = () => {
+    let headerElement = [
+      "id",
+      "Cover",
+      "Title",
+      "Author",
+      "Publish Year",
+      "Total Editions",
+      "Description",
+    ];
+    return headerElement.map((key, index) => {
+      return <th key={index}>{key}</th>;
+    });
+  };
+
   return (
     <section className="booklist">
       <div className="container">
         <div className="section-title">
           <h2>{resultTitle}</h2>
         </div>
-        <div className="booklist-content grid">
-          {booksWithCovers.slice(0, 30).map((item, index) => {
-            return <Book key={index} {...item} />;
-          })}
+        <div className="booklist-content">
+          <table id="employee">
+            <thead>
+              <tr>{renderHeader()}</tr>
+            </thead>
+            <tbody>
+              {booksWithCovers.slice(0, 50).map((item, index) => {
+                return <Book key={index} {...item} />;
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
