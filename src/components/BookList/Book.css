@@ -57,3 +57,25 @@
   max-width: 220px;
   max-height: 220px;
 }
+#employee {
+  align-items: center;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  margin-left: 1rem;
+}
+
+#employee td,
+#employee th {
+  border: 1px solid #ddd;
+  padding: 1px;
+}
+
+#employee tr:hover {
+  background-color: #ddd;
+}
+
+#employee th {
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+}
