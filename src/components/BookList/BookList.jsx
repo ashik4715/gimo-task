@@ -4,7 +4,7 @@ import Book from "../BookList/Book";
 import coverImg from "../../images/cover_not_found.jpg";
 
 const BookList = () => {
-  const { books, resultTitle } = useGlobalContext();
+  const { books } = useGlobalContext();
   const booksWithCovers = books.map((singleBook) => {
     return {
       ...singleBook,
@@ -15,7 +15,7 @@ const BookList = () => {
         : coverImg,
     };
   });
-  console.log(booksWithCovers);
+
   function getColumnIndex(column) {
     const headerRow = document.querySelector("thead tr");
     const headers = Array.from(headerRow.querySelectorAll("th"));
@@ -49,7 +49,9 @@ const BookList = () => {
     <section className="booklist">
       <div className="container">
         <div className="section-title">
-          <h1 id="caption">Tap table's id, title, author to Sort books</h1>
+          <h1 id="caption">
+            Tap tag of table's id, title, author to Sort books
+          </h1>
         </div>
         <div className="booklist-content">
           <table id="employee">
