@@ -15,32 +15,58 @@ const BookList = () => {
         : coverImg,
     };
   });
+  console.log(booksWithCovers);
+  function getColumnIndex(column) {
+    const headerRow = document.querySelector("thead tr");
+    const headers = Array.from(headerRow.querySelectorAll("th"));
+    return (
+      headers.findIndex(
+        (header) => header.textContent.toLowerCase() === column.toLowerCase()
+      ) + 1
+    );
+  }
+  function sortTable(column) {
+    const table = document.getElementById("employee");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
 
-  const renderHeader = () => {
-    let headerElement = [
-      "id",
-      "Cover",
-      "Title",
-      "Author",
-      "Publish Year",
-      "Total Editions",
-      "Description",
-    ];
-    return headerElement.map((key, index) => {
-      return <th key={index}>{key}</th>;
+    const sortedRows = rows.sort((a, b) => {
+      const aValue = a.querySelector(
+        `td:nth-child(${getColumnIndex(column)})`
+      ).textContent;
+      const bValue = b.querySelector(
+        `td:nth-child(${getColumnIndex(column)})`
+      ).textContent;
+      return aValue.localeCompare(bValue, undefined, { numeric: true });
     });
-  };
 
+    while (table.tBodies[0].firstChild) {
+      table.tBodies[0].removeChild(table.tBodies[0].firstChild);
+    }
+
+    table.tBodies[0].append(...sortedRows);
+  }
   return (
     <section className="booklist">
       <div className="container">
         <div className="section-title">
-          <h2>{resultTitle}</h2>
+          <h1 id="caption">Tap table's id, title, author to Sort books</h1>
         </div>
         <div className="booklist-content">
           <table id="employee">
             <thead>
-              <tr>{renderHeader()}</tr>
+              <tr>
+                <th onClick={() => sortTable("id")}>id</th>
+                <th onClick={() => sortTable("cover_id")}>Cover</th>
+                <th onClick={() => sortTable("title")}>Title</th>
+                <th onClick={() => sortTable("author")}>Author</th>
+                <th onClick={() => sortTable("first_publish_year")}>
+                  Publish Year
+                </th>
+                <th onClick={() => sortTable("edition_count")}>
+                  Total Edition
+                </th>
+                <th onClick={() => sortTable("first_sentence")}>Description</th>
+              </tr>
             </thead>
             <tbody>
               {booksWithCovers.slice(0, 50).map((item, index) => {

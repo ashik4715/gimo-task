@@ -57,6 +57,11 @@
   max-width: 220px;
   max-height: 220px;
 }
+
+#caption {
+  text-align: center;
+  align-items: center;
+}
 #employee {
   align-items: center;
   border-collapse: collapse;
@@ -75,6 +80,7 @@
 }
 
 #employee th {
+  padding: 1px;
   text-align: center;
   background-color: #4caf50;
   color: white;
