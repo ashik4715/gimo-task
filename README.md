@@ -1,10 +1,13 @@
 <<<<<<< HEAD
+
 # Project Info
 
 A sample project to use ReactJS to perform Fetch OpenLibrary API with AXIOS function and implementation.
 
 =======
->>>>>>> 3525627 (tables assembled)
+
+> > > > > > > 3525627 (tables assembled)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
